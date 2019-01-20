@@ -70,10 +70,14 @@ export class FormComponent implements OnInit {
 	saveForm() {
 		const product = this.productFormGroup.value as Product;
 		const categoryIds = [];
-		product.Categories.forEach(function (category) {
-			categoryIds.push(category.CategoryId);
-		});
-		product.CategoryIds = categoryIds;
+
+		if (product.Categories.length) {
+			product.Categories.forEach(function (category) {
+				categoryIds.push(category.CategoryId);
+			});
+			product.CategoryIds = categoryIds;
+		}
+
 
 		if (this.productId) {
 			product.ProductId = this.productId;
@@ -83,11 +87,11 @@ export class FormComponent implements OnInit {
 		}
 
 		else {
-			this.productService.addProduct(product).subscribe( () => {
+			this.productService.addProduct(product).subscribe(() => {
 				this.router.navigate(['/product/list']);
 			});
 		}
-		
+
 		this.dialogRef.close(product);
 	}
 

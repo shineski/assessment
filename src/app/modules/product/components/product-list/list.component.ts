@@ -37,9 +37,6 @@ export class ListComponent implements OnInit {
 	}
 
 	openFormDialog(data): void {
-		if (typeof data === 'undefined') {
-			data = null;
-		}
 		const dialogRef = this.dialog.open(FormComponent, {
 			width: '800px',
 			data: data
@@ -52,7 +49,7 @@ export class ListComponent implements OnInit {
 						product.Name = data.Name;
 						product.Description = data.Description;
 					}
-				});
+				});				
 			}
 		});
 	}
@@ -65,6 +62,10 @@ export class ListComponent implements OnInit {
 	
 	editProduct(el: Product) {
 		this.openFormDialog(el);
+	}
+
+	addProduct() {
+		this.openFormDialog(null);
 	}
 
 	openDetailsDialog(product: Product){
