@@ -10,7 +10,7 @@ import { DetailComponent } from './components/product-detail/detail.component';
 import { FormComponent } from './components/product-form/form.component';
 
 import { ProductService } from './product.service';
-import { MatTableModule, MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule, MatPaginatorModule } from '@angular/material';
+import { MatTableModule, MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule, MatPaginatorModule, MatSnackBarModule  } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -33,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 		MatPaginatorModule,
 		MatButtonModule,
 		MatSelectModule,
+		MatSnackBarModule,
 		ReactiveFormsModule	
 	],
 	exports: [

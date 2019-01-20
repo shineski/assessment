@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatSnackBar, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { ProductService } from '../../product.service';
 import { Category } from 'src/app/core/models/category';
@@ -22,7 +22,8 @@ export class FormComponent implements OnInit {
 	title: string;
 
 	constructor(private productService: ProductService, private formBuilder: FormBuilder, private categoryService: CategoryService,
-		public dialogRef: MatDialogRef<FormComponent>, @Inject(MAT_DIALOG_DATA) public data, private router: Router) { }
+		public dialogRef: MatDialogRef<FormComponent>, @Inject(MAT_DIALOG_DATA) public data: Product, 
+		private router: Router, public snackbar: MatSnackBar) { }
 
 	ngOnInit() {
 		this.categoryService.getCategories().subscribe(data => {
@@ -68,10 +69,11 @@ export class FormComponent implements OnInit {
 	}
 
 	saveForm() {
+		const close = "Close";
 		const product = this.productFormGroup.value as Product;
 		const categoryIds = [];
 
-		if (product.Categories.length) {
+		if (product.Categories) {
 			product.Categories.forEach(function (category) {
 				categoryIds.push(category.CategoryId);
 			});
@@ -80,14 +82,22 @@ export class FormComponent implements OnInit {
 
 
 		if (this.productId) {
+			const message = "Product has been changed!";
 			product.ProductId = this.productId;
 			this.productService.updateProduct(product).subscribe(() => {
+				this.snackbar.open(message, close, {
+					duration: 3000
+				});
 				this.router.navigate(['/product/list']);
 			});
 		}
 
 		else {
+			const message = "Product has been added!"
 			this.productService.addProduct(product).subscribe(() => {
+				this.snackbar.open(message, close, {
+					duration: 3000
+				});
 				this.router.navigate(['/product/list']);
 			});
 		}

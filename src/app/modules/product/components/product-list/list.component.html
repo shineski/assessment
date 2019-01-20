@@ -1,7 +1,13 @@
 <h2>Product List</h2>
 
-<div class="button-container">
-	<button class="add" mat-raised-button color="primary" (click)="addProduct()">Add Product</button>
+<div class="heading-container">
+	<mat-form-field>
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter Products">
+	</mat-form-field>
+
+	<span>
+		<button class="add" mat-raised-button color="primary" (click)="addProduct()">Add Product</button>
+	</span>
 </div>
 
 <mat-table [dataSource]="products" class="mat-elevation-z8">

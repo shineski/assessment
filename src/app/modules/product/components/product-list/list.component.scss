@@ -1,10 +1,6 @@
-.button-container {
-    overflow: hidden;
-}
-
-button.add {
-    float: right;
-    margin-bottom: 20px;
+.heading-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 mat-paginator {

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource, MatDialog, MatDialogRef, MatTable } from "@angular/material";
+import { MatPaginator, MatTableDataSource, MatDialog } from "@angular/material";
 
 
 import { ProductService } from '../../product.service';
@@ -18,7 +18,6 @@ export class ListComponent implements OnInit {
 	products = new MatTableDataSource<Product>();
 	displayedColumns: string[] = ['Name', 'Description', 'Action'];
 	@ViewChild(MatPaginator) paginator: MatPaginator;
-	@ViewChild(MatTable) table: MatTable<any>;
 
 
 	constructor(private productService: ProductService, private categoryService: CategoryService, public dialog: MatDialog) { }
@@ -34,6 +33,10 @@ export class ListComponent implements OnInit {
 				this.products.paginator = this.paginator;
 			}
 		);
+	}
+
+	applyFilter(filterValue: string) {
+		this.products.filter = filterValue.trim().toLowerCase();
 	}
 
 	openFormDialog(data): void {
