@@ -1,0 +1,5 @@
+export const environment = {
+  production: false,
+  api: "https://gdm-interview-api.azurewebsites.net/api/v1",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI1MiIsInVuaXF1ZV9uYW1lIjoiaW50ZXJ2aWV3YXBpQGdhcnRuZXIuY29tIiwiZW1haWwiOiJpbnRlcnZpZXdhcGlAZ2FydG5lci5jb20iLCJuYmYiOjE1NDY0NDIxNzYsImV4cCI6MTYwNjQ0MjExNiwiaWF0IjoxNTQ2NDQyMTc2fQ.0FSmPpPJRs1Pcybficq1ufhE4GRYJoPaaM2wvkIwSJg"
+};

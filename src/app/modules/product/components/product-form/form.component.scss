@@ -1,0 +1,28 @@
+.product-form {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+
+    h2 {
+        border-bottom: solid 1px gray;
+        font-weight: 200;
+        margin-bottom: 30px;
+    }
+
+
+    button {
+        margin-right: 10px;
+    }
+
+    .actions {
+        float: right;
+        margin-top: 20px;
+    }
+}
+
+mat-form-field {
+    display: block;
+    margin-bottom: 25px;
+}
+
