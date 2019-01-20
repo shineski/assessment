@@ -43,14 +43,24 @@ export class ListComponent implements OnInit {
 		});
 
 		dialogRef.afterClosed().subscribe( data => {
+			let editAction = false;
 			if (data) {
 				this.products.data.forEach(function (product) {
 					if(product.ProductId === data.ProductId ) {
+						editAction = true;
 						product.Name = data.Name;
 						product.Description = data.Description;
 					}
 				});				
 			}
+
+			// only make API call to refresh table data source when adding new row.
+			if (!editAction) {
+				this.productService.getAllProducts().subscribe( data => {
+					this.products = new MatTableDataSource(data);
+					this.products.paginator = this.paginator;
+				})
+			}			
 		});
 	}
 
