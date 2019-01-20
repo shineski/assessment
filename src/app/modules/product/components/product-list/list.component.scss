@@ -12,9 +12,13 @@ mat-paginator {
 }
 
 
-table {
+mat-table {
     button {
         margin-right: 10px;
     }
     width: 100%;
+}
+
+.mat-column-Description {
+     margin-right: 10px;
 }

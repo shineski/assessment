@@ -47,11 +47,12 @@ export class FormComponent implements OnInit {
 	}
 
 	initForm() {
+		const urlReg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 		this.productFormGroup = this.formBuilder.group({
 			Name: ['', Validators.required],
 			Categories: [''],
 			Description: [''],
-			Url: [''],
+			Url: ['', Validators.pattern(urlReg)],
 		});
 	}
 

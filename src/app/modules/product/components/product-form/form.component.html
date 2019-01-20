@@ -19,14 +19,14 @@
 			</mat-select>
 		</mat-form-field>
 
-		<mat-form-field hintLabel="Max of 500 characters">
+		<mat-form-field hintLabel="Not required, but URL must be valid. Max of 500 characters">
 			<input matInput #url placeholder="Url" formControlName="Url" maxlength="500">
 			<mat-hint align="end">{{ url.value?.length || 0 }}/500</mat-hint>
 		</mat-form-field>
 
 		<div class="actions">
 			<button type="button" mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
-			<button type="submit" mat-raised-button color="primary" (click)="saveForm()">Save</button>
+			<button type="submit" mat-raised-button color="primary" (click)="saveForm()" [disabled]="!productFormGroup.valid">Save</button>
 		</div>
 	</form>
 </div>
